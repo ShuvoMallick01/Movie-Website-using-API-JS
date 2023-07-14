@@ -1,0 +1,35 @@
+/* 
+Template: Website title
+Author: Shuvo Mallick
+Description: Website title
+Version: 1.0.0
+Keywords: 'bootstrap template', 'javascript', 'html-css', 'web template'
+*/
+
+/* ===== IMPORT INDEX ===== */
+
+// All Variable
+@import "./variables";
+
+// Custom Function
+@import "./functions";
+
+// Bootstrap Configuration
+@import "./bootstrap";
+
+// Custom - Mixins
+@import "./mixins";
+
+// Custom - Utilities
+@import "./utilities";
+
+// Custom - Component
+@import "./component";
+
+// ==== Custom - All Pages =====
+@import "./pages/home";
+
+// Custom Responsive
+@import "./responsive";
+
+/* ===== IMPORT INDEX ===== */

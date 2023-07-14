@@ -1,0 +1,24 @@
+// === MIN WIDTH ====
+@media all and (min-width: 992px) {
+}
+
+// === MAX WIDTH ====
+/* === `xxl` applies to large devices (Desktop, less than 1200px) === */
+@media (max-width: 1400px) {
+}
+
+/* === `xl` applies to large devices (Desktop, less than 1200px) === */
+@media (max-width: 1200px) {
+}
+
+/* === 'lg' applies to medium devices (Tablets, less than 992px) === */
+@media (max-width: 992px) {
+}
+
+/* === 'md' applies to small device (Landscape Phones, loess then 768px) === */
+@media (max-width: 768px) {
+}
+
+/* === sm applies to x-small devices (Mobile, Portrait phones, less than 576px) ===  */
+@media (max-width: 576px) {
+}
