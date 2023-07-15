@@ -4107,9 +4107,9 @@ textarea.form-control-lg {
   --bs-navbar-color: rgba(255, 255, 255, 0.55);
   --bs-navbar-hover-color: rgba(255, 255, 255, 0.75);
   --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-  --bs-navbar-active-color: #fff;
-  --bs-navbar-brand-color: #fff;
-  --bs-navbar-brand-hover-color: #fff;
+  --bs-navbar-active-color: #eebc1c;
+  --bs-navbar-brand-color: #ffffff;
+  --bs-navbar-brand-hover-color: #eebc1c;
   --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
@@ -10779,6 +10779,61 @@ textarea.form-control-lg {
 }
 .bg-dark {
   background-color: #030606 !important;
+}
+
+.nav-item .active {
+  font-weight: 600 !important;
+}
+.nav-item:hover {
+  color: #eebc1c;
+}
+
+body {
+  color: #fff;
+}
+
+.form-control {
+  color: #fff;
+}
+.form-control:focus {
+  color: #fff;
+  box-shadow: none;
+}
+
+.card {
+  background-color: #1e3363;
+  color: #fff;
+  border: 3px solid #1e3363;
+}
+
+.now-playing__contents {
+  height: 200px;
+  background-color: #000;
+  position: relative;
+  text-align: center;
+}
+.now-playing__contents h2, .now-playing__contents .h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.search-form {
+  width: 50%;
+  margin: auto;
+}
+.search-form .search-radio {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+.search-form .search-radio .movie-label {
+  margin-right: 20px;
+}
+.search-form .search-flex {
+  display: flex;
+  gap: 10px;
 }
 
 /* === `xxl` applies to large devices (Desktop, less than 1200px) === */

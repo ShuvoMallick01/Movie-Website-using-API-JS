@@ -33,17 +33,41 @@
 }
 // === / TITLE ===
 
-// === TITLE ===
-// === / TITLE ===
+// === NAV ===
+.nav-item {
+  .active {
+    font-weight: 600 !important;
+  }
 
-// === TITLE ===
-// === / TITLE ===
+  &:hover {
+    color: $primary;
+  }
+}
+// === / NAV ===
 
-// === TITLE ===
-// === / TITLE ===
+// === TYPOGRAPHY ===
+body {
+  color: $white;
+}
+// === / TYPOGRAPHY ===
 
-// === TITLE ===
-// === / TITLE ===
+// === FORM ===
+.form-control {
+  color: $white;
+  &:focus {
+    color: $white;
+    box-shadow: none;
+  }
+}
+// === / FORM ===
+
+// === CARD ===
+.card {
+  background-color: #1e3363;
+  color: $white;
+  border: 3px solid #1e3363;
+}
+// === / CARD ===
 
 // === TITLE ===
 // === / TITLE ===

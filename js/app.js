@@ -1,17 +1,37 @@
-// === TITLE ===
-// === / TITLE ===
+const global = {
+  currentpage: window.location.pathname,
+};
 
-// === TITLE ===
-// === / TITLE ===
+// HighLight Active Link / highlightActiveLink / links
+function highlightActiveLink() {
+  const links = document.querySelectorAll(".nav-link");
 
-// === TITLE ===
-// === / TITLE ===
+  links.forEach((link) => {
+    if (link.getAttribute("href") === global.currentpage) {
+      link.classList.add("active");
+    }
+  });
+}
 
-// === TITLE ===
-// === / TITLE ===
+// Init App
+function init() {
+  switch (global.currentpage) {
+    case "/":
+    case "/index.html":
+      console.log("Home Page");
+      break;
+    case "/shows.html":
+      console.log("Tv Show Page");
+      break;
+    case "/movie-details":
+      console.log("Movie Details");
+      break;
+    case "/tv-details":
+      console.log("TV Deatils");
+      break;
+  }
 
-// === TITLE ===
-// === / TITLE ===
+  highlightActiveLink();
+}
 
-// === TITLE ===
-// === / TITLE ===
+init();
