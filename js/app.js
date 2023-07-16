@@ -5,12 +5,10 @@ const global = {
 // Display Popular Movies
 async function displayPopularMovies() {
   const { results } = await fetchAPIData("movie/popular");
-  // console.log(results);
 
   results.forEach((movie) => {
-    console.log(movie);
+    // console.log(movie);
     const div = document.createElement("div");
-    // div.classList.add("col-lg-3 col-md-6");
     div.className = "col-xl-3 col-lg-4";
 
     div.innerHTML = `
@@ -44,13 +42,24 @@ async function displayPopularMovies() {
 async function fetchAPIData(endpoint) {
   const API_KEY = "4bc2ad4ae277f2a876e4ab1951a4111b";
   const API_URL = "https://api.themoviedb.org/3/";
+  showSpinner();
 
   const response = await fetch(
     `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
   );
-
   const data = await response.json();
+  hideSpinner();
+
   return data;
+}
+
+// Show / Hide Spinner
+function showSpinner() {
+  document.querySelector(".spinner").classList.add("loading");
+}
+
+function hideSpinner() {
+  document.querySelector(".spinner").classList.remove("loading");
 }
 
 // HighLight Active Link / highlightActiveLink / links
