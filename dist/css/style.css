@@ -10800,10 +10800,16 @@ body {
   box-shadow: none;
 }
 
-.card {
+.movie-card {
   background-color: #1e3363;
   color: #fff;
   border: 3px solid #1e3363;
+}
+.movie-card h5, .movie-card .h5 {
+  font-size: 16px;
+}
+.movie-card p {
+  font-size: 12px;
 }
 
 .now-playing__contents {

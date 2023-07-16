@@ -62,10 +62,18 @@ body {
 // === / FORM ===
 
 // === CARD ===
-.card {
+.movie-card {
   background-color: #1e3363;
   color: $white;
   border: 3px solid #1e3363;
+
+  h5 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 12px;
+  }
 }
 // === / CARD ===
 

@@ -47,33 +47,22 @@
       <nav
         class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark fixed-top py-3"
       >
-        <div class="container">
+        <div
+          class="container d-flex align-items-center justify-content-between"
+        >
           <a class="navbar-brand fw-semibold" href="/">SKYBER</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 gap-4 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/index.html"
-                  >Movies</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/shows.html"
-                  >Tv Shows</a
-                >
-              </li>
-            </ul>
-          </div>
+          <ul class="navbar-nav gap-4 d-flex align-items-center flex-row">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/index.html"
+                >Movies</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/shows.html"
+                >Tv Shows</a
+              >
+            </li>
+          </ul>
         </div>
       </nav>
     </header>
@@ -119,7 +108,7 @@
                 id="search-term"
                 placeholder="Enter search term"
               />
-              <button class="btn btn-primary px-5" type="submit">
+              <button class="btn btn-primary px-4" type="submit">
                 <i class="fas fa-search"></i>
               </button>
             </div>
@@ -132,13 +121,13 @@
     <!-- Popular Movies -->
     <section class="container">
       <h2 class="fw-semibold text-center pb-4">Popular Movies</h2>
-
-      <div id="popular-movies" class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="card">
+      <!-- All Cards -->
+      <div class="row gy-4" id="popular-movies">
+        <!-- <div class="col-lg-3 col-md-6">
+          <div class="card movie-card">
             <img
-              src="./assets/images/movie-thumnail.png"
-              class="card-img-top overflow-hidden"
+              src="./assets/images/movie-thumnail.jpg"
+              class="card-img-top"
               alt="Movie Titlte"
             />
             <div class="card-body">
@@ -146,7 +135,7 @@
               <p class="card-text">Release: XX/XX/XXXX</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
