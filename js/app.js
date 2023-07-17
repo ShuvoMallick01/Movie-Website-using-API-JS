@@ -2,12 +2,11 @@ const global = {
   currentpage: window.location.pathname,
 };
 
-// Display 20 Most Popular Movies
+// === MOVIE: DISPLAY 20 MOST POPULAR MOVIES ===
 async function displayPopularMovies() {
   const { results } = await fetchAPIData("movie/popular");
 
   results.forEach((movie) => {
-    // console.log(movie);
     const div = document.createElement("div");
     div.className = "col-xl-3 col-lg-4";
 
@@ -38,14 +37,13 @@ async function displayPopularMovies() {
   });
 }
 
-// Display 20 Most Popular TV Showes
+// ===  TV SHOWS: DISPLAY 20 MOST POPULAR TV SHOWES ===
 async function displayPopularShows() {
   const { results } = await fetchAPIData("tv/popular");
 
   results.forEach((show) => {
     const div = document.createElement("div");
     div.className = "col-xl-3 col-lg-4";
-    // console.log(show);
     div.innerHTML = `<div class="card movie-card">
         ${
           show.poster_path
@@ -73,7 +71,7 @@ async function displayPopularShows() {
   });
 }
 
-// Display Movie Details
+// === DISPLAY MOVIE DETAILS ===
 async function displayMovieDetails() {
   const movieId = window.location.search.split("=")[1];
   const movie = await fetchAPIData(`movie/${movieId}`);
@@ -148,7 +146,80 @@ async function displayMovieDetails() {
   document.getElementById("movie-details").appendChild(div);
 }
 
-// Fetch Data
+// === DISPLAY TV SHOW DETAILS ===
+async function displayShowDetails() {
+  const showId = window.location.search.split("=")[1];
+  const show = await fetchAPIData(`tv/${showId}`);
+  console.log(show);
+
+  // Overlay for Background Image
+  let movieBackDropPath = `https://www.themoviedb.org/t/p/original${show.backdrop_path}`;
+  displayBackgroundImage("show", movieBackDropPath);
+
+  const div = document.createElement("div");
+  div.innerHTML = `
+          <div class="row show-top">
+          <div class="col-lg-4 col-md-5">
+            ${
+              show.poster_path
+                ? `<img
+              src="https://www.themoviedb.org/t/p/w300${show.poster_path}"
+              class="card-img-top"
+              alt="${show.name}"
+            />`
+                : `<img
+              src="./assets/images/movie-thumnail.jpg"
+              class="card-img-top"
+              alt="${show.title}"
+            />`
+            }
+          </div>
+
+          <div class="right-show-info offset-lg-1 col-lg-7 col-md-7">
+            <h2>${show.name}</h2>
+            <p><i class="icon-star-filled pe-2 text-warning"></i>${show.vote_average.toFixed(
+              1
+            )}/10</p>
+            <p class="text-muted">Last Air Date: ${show.last_air_date}</p>
+            <p>
+              ${show.overview}
+            </p>
+            <p class="mt-4 mb-1 fw-800">Series</p>
+            <ul class="">
+            ${show.genres.map((genre) => `<li >${genre.name}</li>`).join("")}
+            </ul>
+
+            <a class="btn btn-outline-light" href="${
+              show.homepage
+            }" target="_blank"
+              >Visit Movie Homepage</a
+            >
+          </div>
+        </div>
+
+        <div class="show-bottom py-5">
+          <h2>Show Info</h2>
+
+          <ul>
+            <li><span class="text-secondary">Number of Episodes: </span>${
+              show.number_of_episodes
+            } Minutes</li>
+             <li><span class="text-secondary">Last Episodes: </span>${
+               show.last_episode_to_air.air_date
+             } Minutes</li>
+            <li><span class="text-secondary">Status: </span>${show.status}</li>
+          </ul>
+
+          <h4>Production Companies</h4>
+          <div class="list-group">${show.production_companies.map(
+            (company) => ` ` + company.name
+          )}</div>
+        </div>`;
+
+  document.getElementById("show-details").appendChild(div);
+}
+
+// === MAIN FUNCTION: FETCH DATA ===
 async function fetchAPIData(endpoint) {
   const API_KEY = "4bc2ad4ae277f2a876e4ab1951a4111b";
   const API_URL = "https://api.themoviedb.org/3/";
@@ -226,7 +297,7 @@ function init() {
       displayMovieDetails();
       break;
     case "/tv-details.html":
-      console.log("TV Deatils");
+      displayShowDetails();
       break;
   }
 

@@ -92,8 +92,12 @@
     }
     ul {
       margin-bottom: 30px;
+      padding-left: 0px;
       li {
-        margin-bottom: 5px;
+        list-style: none;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $gray-700;
       }
     }
   }
@@ -101,6 +105,40 @@
 // === / MOVIE DETAILS ===
 
 // === TITLE ===
+
+.show-details {
+  .show-top {
+    display: flex;
+    align-items: center;
+
+    .right-show-info {
+      h2 {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .btn {
+        margin-top: 25px;
+      }
+    }
+  }
+
+  .show-bottom {
+    h2 {
+      text-align: center;
+    }
+    ul {
+      margin-bottom: 30px;
+      padding-left: 0px;
+      li {
+        list-style: none;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $gray-700;
+      }
+    }
+  }
+}
 // === / TITLE ===
 
 // === TITLE ===

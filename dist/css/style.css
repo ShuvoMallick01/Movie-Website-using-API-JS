@@ -10981,9 +10981,38 @@ body {
 }
 .movie-details .details-bottom ul {
   margin-bottom: 30px;
+  padding-left: 0px;
 }
 .movie-details .details-bottom ul li {
-  margin-bottom: 5px;
+  list-style: none;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #495057;
+}
+
+.show-details .show-top {
+  display: flex;
+  align-items: center;
+}
+.show-details .show-top .right-show-info h2, .show-details .show-top .right-show-info .h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.show-details .show-top .right-show-info .btn {
+  margin-top: 25px;
+}
+.show-details .show-bottom h2, .show-details .show-bottom .h2 {
+  text-align: center;
+}
+.show-details .show-bottom ul {
+  margin-bottom: 30px;
+  padding-left: 0px;
+}
+.show-details .show-bottom ul li {
+  list-style: none;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #495057;
 }
 
 /* === `xxl` applies to large devices (Desktop, less than 1200px) === */
