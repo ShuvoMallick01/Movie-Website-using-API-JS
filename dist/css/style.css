@@ -10935,19 +10935,25 @@ body {
   font-size: 25px;
 }
 
-.now-playing__contents {
-  height: 200px;
-  background-color: #000;
-  position: relative;
-  text-align: center;
+.movie-playing {
+  margin-top: 80px;
+  background-color: black;
 }
-.now-playing__contents h2, .now-playing__contents .h2 {
+.movie-playing__overlay {
+  content: "";
+  background-image: url("../../assets/images/movie-displaybackdrop.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  opacity: 0.1;
 }
-
+.movie-playing h2, .movie-playing .h2 {
+  padding-top: 70px !important;
+}
 .search-form {
   width: 50%;
   margin: auto;

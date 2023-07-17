@@ -9,19 +9,33 @@
 // === / NAVBAR ===
 
 // === NOW-PLAYING ===
-.now-playing {
-  &__contents {
-    height: 200px;
-    background-color: $black;
-    position: relative;
-    text-align: center;
+.movie-playing {
+  margin-top: 80px;
+  background-color: black;
 
-    h2 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+  &__overlay {
+    content: "";
+    background-image: url("../../assets/images/movie-displaybackdrop.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    // background-size: 100%;
+    // background-size: cover;
+    // background-size: contain;
+    background-size: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    opacity: 0.1;
+  }
+
+  h2 {
+    padding-top: 70px !important;
+  }
+
+  &__contents {
+    // height: 200px;
+    // background-color: $black;
   }
 }
 // === / NOW-PLAYING ===
@@ -105,7 +119,6 @@
 // === / MOVIE DETAILS ===
 
 // === TITLE ===
-
 .show-details {
   .show-top {
     display: flex;

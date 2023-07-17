@@ -25,7 +25,7 @@ async function displayPopularMovies() {
               alt="Movie Titlte"
             />`
       }
-      
+
       <div class="card-body">
         <h5 class="card-title">${movie.title}</h5>
         <p class="card-text">Release: ${movie.release_date}</p>
