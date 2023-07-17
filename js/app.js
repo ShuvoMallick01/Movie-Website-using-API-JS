@@ -2,7 +2,7 @@ const global = {
   currentpage: window.location.pathname,
 };
 
-// Display Popular Movies
+// Display 20 Most Popular Movies
 async function displayPopularMovies() {
   const { results } = await fetchAPIData("movie/popular");
 
@@ -15,7 +15,7 @@ async function displayPopularMovies() {
     <div class="card movie-card">
       ${
         movie.poster_path
-          ? `<a href="./movie-details.html/${movie.id}">
+          ? `<a href="./movie-details.html?id=${movie.id}">
         <img src="https://www.themoviedb.org/t/p/w300${movie.poster_path}"
         class="card-img-top" alt="${movie.title}"
       />
@@ -38,6 +38,113 @@ async function displayPopularMovies() {
   });
 }
 
+// Display 20 Most Popular TV Showes
+async function displayPopularShows() {
+  const { results } = await fetchAPIData("tv/popular");
+
+  results.forEach((show) => {
+    const div = document.createElement("div");
+    div.className = "col-xl-3 col-lg-4";
+    // console.log(show);
+    div.innerHTML = `<div class="card movie-card">
+        ${
+          show.poster_path
+            ? `
+          <a href="./tv-details.html?id=${show.id}">
+            <img
+            src="https://www.themoviedb.org/t/p/w300${show.poster_path}"
+            class="card-img-top"
+            alt="${show.name}"/>
+        </a>`
+            : `
+             <img
+            src="./assets/images/movie-thumnail.jpg"
+            class="card-img-top"
+            alt="Movie Titlte"/>`
+        }
+
+      <div class="card-body">
+        <h5 class="card-title">${show.name}</h5>
+        <p class="card-text">Aired: ${show.first_air_date}</p>
+      </div>
+    </div>`;
+
+    document.getElementById("popular-shows").appendChild(div);
+  });
+}
+
+// Display Movie Details
+async function displayMovieDetails() {
+  const movieId = window.location.search.split("=")[1];
+  const movie = await fetchAPIData(`movie/${movieId}`);
+  console.log(movie);
+
+  const div = document.createElement("div");
+  div.innerHTML = `
+          <div class="row details-top">
+          <div class="col-lg-4 col-md-5">
+            ${
+              movie.poster_path
+                ? `<img
+              src="https://www.themoviedb.org/t/p/w300${movie.poster_path}"
+              class="card-img-top"
+              alt="${movie.title}"
+            />`
+                : `<img
+              src="./assets/images/movie-thumnail.jpg"
+              class="card-img-top"
+              alt="${movie.title}"
+            />`
+            }
+          </div>
+
+          <div class="right-movie-info offset-lg-1 col-lg-7 col-md-7">
+            <h2>${movie.title}</h2>
+            <p><i class="icon-star-filled pe-2 text-warning"></i>${movie.vote_average.toFixed(
+              1
+            )}/10</p>
+            <p class="text-muted">Release Date: ${movie.release_date}</p>
+            <p>
+              ${movie.overview}
+            </p>
+            <p>Series</p>
+            <ul>
+            ${movie.genres.map((genre) => `<li>${genre.name}</li>`).join("")}
+            </ul>
+
+            <a class="btn btn-outline-light" href="${
+              movie.homepage
+            }" target="_blank"
+              >Visit Movie Homepage</a
+            >
+          </div>
+        </div>
+
+        <div class="details-bottom py-5">
+          <h2>Movie Info</h2>
+
+          <ul>
+            <li><span class="text-secondary">Budget: </span>$${commatoTheNumber(
+              movie.budget
+            )}</li>
+            <li><span class="text-secondary">Revenue: </span>$${commatoTheNumber(
+              movie.revenue
+            )}</li>
+            <li><span class="text-secondary">Runtime: </span>${
+              movie.runtime
+            } Minutes</li>
+            <li><span class="text-secondary">Status: </span>${movie.status}</li>
+          </ul>
+
+          <h4>Production Companies</h4>
+          <div class="list-group">${movie.production_companies.map(
+            (company) => ` ` + company.name
+          )}</div>
+        </div>`;
+
+  document.getElementById("movie-details").appendChild(div);
+}
+
 // Fetch Data
 async function fetchAPIData(endpoint) {
   const API_KEY = "4bc2ad4ae277f2a876e4ab1951a4111b";
@@ -53,11 +160,11 @@ async function fetchAPIData(endpoint) {
   return data;
 }
 
-// Show / Hide Spinner
+// Show Spinner
 function showSpinner() {
   document.querySelector(".spinner").classList.add("loading");
 }
-
+// Hide Spinner
 function hideSpinner() {
   document.querySelector(".spinner").classList.remove("loading");
 }
@@ -73,6 +180,11 @@ function highlightActiveLink() {
   });
 }
 
+// Commas to the Number
+function commatoTheNumber(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // Init App
 function init() {
   switch (global.currentpage) {
@@ -81,12 +193,12 @@ function init() {
       displayPopularMovies();
       break;
     case "/shows.html":
-      console.log("Tv Show Page");
+      displayPopularShows();
       break;
-    case "/movie-details":
-      console.log("Movie Details");
+    case "/movie-details.html":
+      displayMovieDetails();
       break;
-    case "/tv-details":
+    case "/tv-details.html":
       console.log("TV Deatils");
       break;
   }

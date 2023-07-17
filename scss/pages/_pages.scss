@@ -52,8 +52,37 @@
 }
 // === / POPULAR MOVIE ===
 
-// === TITLE ===
-// === / TITLE ===
+// === MOVIE DETAILS ===
+.movie-details {
+  .details-top {
+    display: flex;
+    align-items: center;
+
+    .right-movie-info {
+      h2 {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .btn {
+        margin-top: 25px;
+      }
+    }
+  }
+
+  .details-bottom {
+    h2 {
+      text-align: center;
+    }
+    ul {
+      margin-bottom: 30px;
+      li {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+// === / MOVIE DETAILS ===
 
 // === TITLE ===
 // === / TITLE ===

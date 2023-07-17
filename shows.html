@@ -68,30 +68,44 @@
     </header>
     <!-- / NAVBAR -->
 
-    <!-- NOW PLAYING SECTION  -->
-    <section class="now-playing">
-      <div class="container mb-5 pb-lg-4 mt-5 pt-5">
-        <div class="row">
-          <h2>Now Playing</h2>
-          <div class="swiper"></div>
-        </div>
+    <!-- Popular Movies -->
+    <section class="container mt-5 pt-5">
+      <h2 class="fw-semibold text-center pb-4">Popular TV Shows</h2>
+      <!-- All Cards -->
+      <div class="row gy-4" id="popular-shows">
+        <!-- <div class="col-xl-3 col-lg-4">
+          <div class="card movie-card">
+            <a href="./tv-details.html">
+              <img
+                src="./assets/images/movie-thumnail.jpg"
+                class="card-img-top"
+                alt="Movie Titlte"
+              />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Show title</h5>
+              <p class="card-text">Aired: XX/XX/XXXX</p>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- End cards -->
       </div>
     </section>
-    <!-- / BANNER  -->
 
-    <!-- Popular TV Shows -->
-    <section class="container">
-      <h2>Popular TV Shows</h2>
-      <div id="popular-shows" class="grid"></div>
+    <!-- TITLE -->
+    <section>
+      <div class="container mb-5 pb-lg-4">
+        <div class="row"></div>
+      </div>
     </section>
-
-    <!-- <img src="./assets/images/title.jpg" class="img-fluid" alt="Image" /> -->
+    <!-- / TITLE -->
 
     <!-- FOOTER -->
-    <footer class="main-footer">
-      <div class="container">
-        <div class="logo"><span>FLIXX</span></div>
-        <div class="social-links">
+    <footer class="main-footer py-4 bg-black">
+      <div class="container d-flex justify-content-between">
+        <div class="logo fw-semibold fs-4"><span>SKYBER</span></div>
+        <div class="social-links d-flex gap-4 fs-5">
           <a href="https://www.facebook.com" target="_blank"
             ><i class="fab fa-facebook-f"></i
           ></a>
@@ -106,14 +120,10 @@
     </footer>
     <!-- / FOOTER -->
 
-    <!-- ==== JS LINKS ==== -->
-    <!-- bootstrap js -->
-    <!-- <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-      defer
-    ></script> -->
+    <!-- Spinner -->
+    <div class="spinner"></div>
+    <!-- <div class="content"><h3>stuff goes in here!</h3></div> -->
+
     <!-- custom js -->
     <script src="js/app.js" defer></script>
   </body>

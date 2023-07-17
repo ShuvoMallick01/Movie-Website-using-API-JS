@@ -10961,6 +10961,27 @@ body {
   gap: 10px;
 }
 
+.movie-details .details-top {
+  display: flex;
+  align-items: center;
+}
+.movie-details .details-top .right-movie-info h2, .movie-details .details-top .right-movie-info .h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.movie-details .details-top .right-movie-info .btn {
+  margin-top: 25px;
+}
+.movie-details .details-bottom h2, .movie-details .details-bottom .h2 {
+  text-align: center;
+}
+.movie-details .details-bottom ul {
+  margin-bottom: 30px;
+}
+.movie-details .details-bottom ul li {
+  margin-bottom: 5px;
+}
+
 /* === `xxl` applies to large devices (Desktop, less than 1200px) === */
 /* === `xl` applies to large devices (Desktop, less than 1200px) === */
 /* === 'lg' applies to medium devices (Tablets, less than 992px) === */

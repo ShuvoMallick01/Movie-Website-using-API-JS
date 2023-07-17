@@ -11,24 +11,12 @@ Keywords: 'bootstrap template', 'javascript', 'html-css', 'web template'
 // All Variable
 @import "./variables";
 
-// Custom Function
-@import "./functions";
-
 // Bootstrap Configuration
 @import "./bootstrap";
 
-// Custom - Mixins
-@import "./mixins";
-
-// Custom - Utilities
-@import "./utilities";
-
-// Custom - Component
-@import "./component";
-
 // ==== Custom - All Pages =====
 @import "./add-on/spinner";
-@import "./pages";
+@import "./pages/pages";
 
 // Custom Responsive
 @import "./responsive";
