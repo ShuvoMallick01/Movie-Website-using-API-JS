@@ -1,7 +1,8 @@
 // === NAVBAR ===
 .custom-navbar {
   .navbar {
-    .navbar-nav {
+    .navbar-brand {
+      font-size: 25px;
     }
   }
 }
@@ -53,6 +54,21 @@
 // === / POPULAR MOVIE ===
 
 // === MOVIE DETAILS ===
+// .overlay-movie-image {
+//   background-image: url(../../assets/images/movie-displaybackdrop.jpg);
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   height: 100vh;
+//   width: 100vw !important;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: -1;
+//   opacity: 0.1;
+//   position: fixed;
+// }
+
 .movie-details {
   .details-top {
     display: flex;

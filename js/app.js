@@ -77,7 +77,10 @@ async function displayPopularShows() {
 async function displayMovieDetails() {
   const movieId = window.location.search.split("=")[1];
   const movie = await fetchAPIData(`movie/${movieId}`);
-  console.log(movie);
+
+  // Overlay for Background Image
+  let movieBackDropPath = `https://www.themoviedb.org/t/p/original${movie.backdrop_path}`;
+  displayBackgroundImage("movie", movieBackDropPath);
 
   const div = document.createElement("div");
   div.innerHTML = `
@@ -178,6 +181,30 @@ function highlightActiveLink() {
       link.classList.add("active");
     }
   });
+}
+
+// DisplayBackgroup on Details Pages
+function displayBackgroundImage(type, backgroundPath) {
+  const overlayDiv = document.createElement("div");
+  // overlayDiv.classList.add("overlayBackground");
+  overlayDiv.style.backgroundImage = `url(${backgroundPath})`;
+  overlayDiv.style.backgroundPosition = "center";
+  overlayDiv.style.backgroundRepeat = "no-repeat";
+  overlayDiv.style.backgroundSize = "cover";
+  overlayDiv.style.height = "100vh";
+  overlayDiv.style.width = "100vw";
+  overlayDiv.style.position = "absolute";
+  overlayDiv.style.top = "0";
+  overlayDiv.style.left = "0";
+  overlayDiv.style.zIndex = "-1";
+  overlayDiv.style.opacity = "0.1";
+  overlayDiv.style.position = "fixed";
+
+  if (type === "movie") {
+    document.querySelector(".movie-details").appendChild(overlayDiv);
+  } else {
+    document.querySelector(".show-details").appendChild(overlayDiv);
+  }
 }
 
 // Commas to the Number

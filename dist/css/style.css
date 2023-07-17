@@ -10931,6 +10931,10 @@ body {
     transform: rotate(360deg);
   }
 }
+.custom-navbar .navbar .navbar-brand {
+  font-size: 25px;
+}
+
 .now-playing__contents {
   height: 200px;
   background-color: #000;
