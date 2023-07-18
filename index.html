@@ -75,37 +75,36 @@
     <!-- / NAVBAR -->
 
     <!-- NOW PLAYING SECTION  -->
-    <section class="movie-playing overflow-hidden">
-      <div class="movie-playing__overlay"></div>
-      <div class="container mb-5 pb-lg-4">
-        <h2 class="fw-semibold text-center pb-4">Now Playing</h2>
+    <section class="moviePlaying">
+      <div class="container py-5">
+        <!-- all slides -->
+        <div class="row moviePlaying__sliders">
+          <h2 class="fw-semibold text-center pb-4 text-white">Now Playing</h2>
 
-        <div class="movie-playing__sliders mb-5">
-          <div class="row">
-            <div class="col-lg-3 col-md-6">
-              <div class="card movie-card">
-                <img
-                  src="./assets/images/movie-thumnail.jpg"
-                  class="card-img-top"
-                  alt="Movie Titlte"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Movie title</h5>
-                  <p class="card-text">Release: XX/XX/XXXX</p>
-                </div>
+          <!-- slide -->
+          <div class="col-lg-3 col-md-6">
+            <div class="card movie-card">
+              <img
+                src="./assets/images/movie-thumnail.jpg"
+                class="card-img-top"
+                alt="Movie Titlte"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Movie title</h5>
+                <p class="card-text">Release: XX/XX/XXXX</p>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="card movie-card">
-                <img
-                  src="./assets/images/movie-thumnail.jpg"
-                  class="card-img-top"
-                  alt="Movie Titlte"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Movie title</h5>
-                  <p class="card-text">Release: XX/XX/XXXX</p>
-                </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="card movie-card">
+              <img
+                src="./assets/images/movie-thumnail.jpg"
+                class="card-img-top"
+                alt="Movie Titlte"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Movie title</h5>
+                <p class="card-text">Release: XX/XX/XXXX</p>
               </div>
             </div>
           </div>
@@ -206,12 +205,12 @@
 
     <!-- ==== JS LINKS ==== -->
     <!-- bootstrap js -->
-    <!-- <script
+    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
       defer
-    ></script> -->
+    ></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 

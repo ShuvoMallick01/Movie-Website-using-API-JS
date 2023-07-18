@@ -10931,28 +10931,31 @@ body {
     transform: rotate(360deg);
   }
 }
-.custom-navbar .navbar .navbar-brand {
+.custom-navbar {
+  margin-bottom: 82px;
+}
+.custom-navbar .navbar-brand {
   font-size: 25px;
 }
 
-.movie-playing {
-  margin-top: 80px;
-  background-color: black;
-}
-.movie-playing__overlay {
+.moviePlaying {
   content: "";
   background-image: url("../../assets/images/movie-displaybackdrop.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  height: 100%;
+  position: relative;
+  z-index: -1;
+}
+.moviePlaying::before {
+  content: "";
   position: absolute;
+  background-color: rgba(0, 0, 0, 0.678);
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
-  z-index: 10;
-  opacity: 0.1;
-}
-.movie-playing h2, .movie-playing .h2 {
-  padding-top: 70px !important;
+  z-index: -1;
 }
 .search-form {
   width: 50%;
