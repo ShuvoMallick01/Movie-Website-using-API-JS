@@ -10,13 +10,17 @@
 
 // === NOW-PLAYING ===
 .moviePlaying {
-  content: "";
+  // content: "";
   background-image: url("../../assets/images/movie-displaybackdrop.jpg");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
+  width: 100%;
+  position: fixed;
   position: relative;
-  z-index: -1;
+  z-index: 1;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -27,9 +31,6 @@
     height: 100%;
     width: 100%;
     z-index: -1;
-  }
-
-  &__sliders {
   }
 }
 // === / NOW-PLAYING ===

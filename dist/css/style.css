@@ -10812,6 +10812,24 @@ body {
   font-size: 12px;
 }
 
+.playing-movie-card {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 9;
+}
+.playing-movie-card .card-body {
+  text-align: center;
+}
+.playing-movie-card .card-body .card-title {
+  margin-bottom: 0;
+}
+.playing-movie-card .card-body p {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 /* Absolute Center Spinner */
 .loading {
   position: fixed;
@@ -10939,13 +10957,16 @@ body {
 }
 
 .moviePlaying {
-  content: "";
   background-image: url("../../assets/images/movie-displaybackdrop.jpg");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
+  width: 100%;
+  position: fixed;
   position: relative;
-  z-index: -1;
+  z-index: 1;
+  overflow: hidden;
 }
 .moviePlaying::before {
   content: "";
@@ -10957,6 +10978,7 @@ body {
   width: 100%;
   z-index: -1;
 }
+
 .search-form {
   width: 50%;
   margin: auto;

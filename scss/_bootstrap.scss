@@ -75,6 +75,27 @@ body {
     font-size: 12px;
   }
 }
+
+.playing-movie-card {
+  background-color: $black;
+  color: $white;
+  border: none;
+  cursor: pointer;
+  z-index: 9;
+
+  .card-body {
+    text-align: center;
+
+    .card-title {
+      margin-bottom: 0;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}
 // === / CARD ===
 
 // === TITLE ===

@@ -219,6 +219,77 @@ async function displayShowDetails() {
   document.getElementById("show-details").appendChild(div);
 }
 
+// === DISPLAY SLIDER PLAYING MOVIE ===
+async function displaySlider() {
+  const { results } = await fetchAPIData("movie/now_playing");
+  console.log(results[1]);
+
+  results.forEach((movie) => {
+    const div = document.createElement("div");
+    div.className = "swiper-slide shadow-lg";
+
+    div.innerHTML = `
+    <div class="card playing-movie-card">
+      <a href="movie-details.html?id=${movie.id}" target="_blank">
+        <img
+          src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${
+            movie.poster_path
+          }"
+          class="card-img-top"
+          alt="${movie.title}"
+        />
+      </a>
+      <div class="card-body">
+        <p class="card-title">
+          <i class="icon-star-filled text-warning me-2"></i>${movie.vote_average.toFixed(
+            1
+          )}/10
+        </p>
+      </div>
+    </div>`;
+
+    document.querySelector(".swiper-wrapper").appendChild(div);
+
+    initSwiper();
+  });
+}
+
+// Init Swiper
+function initSwiper() {
+  const swiper = new Swiper(".swiper", {
+    // Default parameters
+    slidesPerView: 4,
+    spaceBetween: 30,
+    // speed: 400,
+    freeMode: true,
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+
+    // Responsive breakpoints
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 1,
+      },
+      // when window width is >= 480px
+      500: {
+        slidesPerView: 2,
+      },
+      // when window width is >= 640px
+      700: {
+        slidesPerView: 3,
+      },
+
+      // when window width is >= 1000px
+      1200: {
+        slidesPerView: 4,
+      },
+    },
+  });
+}
 // === MAIN FUNCTION: FETCH DATA ===
 async function fetchAPIData(endpoint) {
   const API_KEY = "4bc2ad4ae277f2a876e4ab1951a4111b";
@@ -288,6 +359,7 @@ function init() {
   switch (global.currentpage) {
     case "/":
     case "/index.html":
+      displaySlider();
       displayPopularMovies();
       break;
     case "/shows.html":
