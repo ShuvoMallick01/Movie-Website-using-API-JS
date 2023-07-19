@@ -114,16 +114,18 @@
       <div class="container pb-lg-4">
         <div class="row">
           <div id="alert"></div>
-          <form class="search-form">
+          <!-- form -->
+          <form class="search-form" action="/search.html">
             <div class="search-radio">
               <input
                 type="radio"
-                id="type"
-                name="movie"
+                id="movie"
+                name="type"
                 value="movie"
                 checked
               />
               <label for="movies" class="movie-label">Movies</label>
+
               <input type="radio" id="tv" name="type" value="tv" />
               <label for="movies">TV Shows</label>
             </div>
@@ -149,14 +151,17 @@
     <!-- Popular Movies -->
     <section class="container mt-4">
       <h2 class="fw-semibold text-center pb-4">Popular Movies</h2>
+
       <div class="row gy-4 popular-movies" id="popular-movies">
         <!-- <div class="col-lg-3 col-md-6">
           <div class="card movie-card">
-            <img
-              src="./assets/images/movie-thumnail.jpg"
-              class="card-img-top"
-              alt="Movie Titlte"
-            />
+            <a href="./movie-details.html?id=movieid">
+              <img
+                src="./assets/images/movie-thumnail.jpg"
+                class="card-img-top"
+                alt="Movie Titlte"
+              />
+            </a>
             <div class="card-body">
               <h5 class="card-title">Movie title</h5>
               <p class="card-text">Release: XX/XX/XXXX</p>
@@ -165,16 +170,6 @@
         </div> -->
       </div>
     </section>
-
-    <!-- TITLE -->
-    <section>
-      <div class="container mb-5 pb-lg-4">
-        <div class="row"></div>
-      </div>
-    </section>
-    <!-- / TITLE -->
-
-    <!-- <img src="./assets/images/title.jpg" class="img-fluid" alt="Image" /> -->
 
     <!-- FOOTER -->
     <footer class="main-footer py-4 bg-black">

@@ -1,5 +1,15 @@
 const global = {
   currentpage: window.location.pathname,
+  search: {
+    term: "",
+    type: "",
+    page: 1,
+    totalPage: 1,
+  },
+  api: {
+    apiKey: "4bc2ad4ae277f2a876e4ab1951a4111b",
+    apiUrl: "https://api.themoviedb.org/3/",
+  },
 };
 
 // === MOVIE: DISPLAY 20 MOST POPULAR MOVIES ===
@@ -34,40 +44,6 @@ async function displayPopularMovies() {
 
     const popularMovie = document.getElementById("popular-movies");
     popularMovie.appendChild(div);
-  });
-}
-
-// ===  TV SHOWS: DISPLAY 20 MOST POPULAR TV SHOWES ===
-async function displayPopularShows() {
-  const { results } = await fetchAPIData("tv/popular");
-
-  results.forEach((show) => {
-    const div = document.createElement("div");
-    div.className = "col-xl-3 col-lg-4";
-    div.innerHTML = `<div class="card movie-card">
-        ${
-          show.poster_path
-            ? `
-          <a href="./tv-details.html?id=${show.id}">
-            <img
-            src="https://www.themoviedb.org/t/p/w300${show.poster_path}"
-            class="card-img-top"
-            alt="${show.name}"/>
-        </a>`
-            : `
-             <img
-            src="./assets/images/movie-thumnail.jpg"
-            class="card-img-top"
-            alt="Movie Titlte"/>`
-        }
-
-      <div class="card-body">
-        <h5 class="card-title">${show.name}</h5>
-        <p class="card-text">Aired: ${show.first_air_date}</p>
-      </div>
-    </div>`;
-
-    document.getElementById("popular-shows").appendChild(div);
   });
 }
 
@@ -144,6 +120,40 @@ async function displayMovieDetails() {
         </div>`;
 
   document.getElementById("movie-details").appendChild(div);
+}
+
+// ===  TV SHOWS: DISPLAY 20 MOST POPULAR TV SHOWES ===
+async function displayPopularShows() {
+  const { results } = await fetchAPIData("tv/popular");
+
+  results.forEach((show) => {
+    const div = document.createElement("div");
+    div.className = "col-xl-3 col-lg-4";
+    div.innerHTML = `<div class="card movie-card">
+        ${
+          show.poster_path
+            ? `
+          <a href="./tv-details.html?id=${show.id}">
+            <img
+            src="https://www.themoviedb.org/t/p/w300${show.poster_path}"
+            class="card-img-top"
+            alt="${show.name}"/>
+        </a>`
+            : `
+             <img
+            src="./assets/images/movie-thumnail.jpg"
+            class="card-img-top"
+            alt="Movie Titlte"/>`
+        }
+
+      <div class="card-body">
+        <h5 class="card-title">${show.name}</h5>
+        <p class="card-text">Aired: ${show.first_air_date}</p>
+      </div>
+    </div>`;
+
+    document.getElementById("popular-shows").appendChild(div);
+  });
 }
 
 // === DISPLAY TV SHOW DETAILS ===
@@ -254,6 +264,63 @@ async function displaySlider() {
   });
 }
 
+// === SEARCH ===
+async function search() {
+  const queryString = window.location.search;
+  let urlParams = new URLSearchParams(queryString);
+
+  global.search.term = urlParams.get("search-term");
+  global.search.type = urlParams.get("type");
+
+  if (global.search.term !== "" && global.search.term !== null) {
+    const result = await searchAPIData();
+    console.log(result);
+  } else {
+    alert("Blank Input..", "alert");
+  }
+}
+
+// === MAKE SEARCH AND GET DATA
+async function searchAPIData() {
+  const API_KEY = global.api.apiKey;
+  const API_URL = global.api.apiUrl;
+  showSpinner();
+
+  const response = await fetch(
+    `${API_URL}search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}`
+  );
+  const data = await response.json();
+
+  hideSpinner();
+
+  return data;
+}
+
+// === MAIN FUNCTION: FETCH DATA ===
+async function fetchAPIData(endpoint) {
+  const API_KEY = global.api.apiKey;
+  const API_URL = global.api.apiUrl;
+  showSpinner();
+
+  const response = await fetch(
+    `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
+  );
+  const data = await response.json();
+  hideSpinner();
+  return data;
+}
+
+// Show Alert
+function alert(message, className) {
+  const div = document.createElement("div");
+  div.classList.add("alert-warning", className);
+  div.setAttribute("role", "alert");
+  div.appendChild(document.createTextNode(message));
+  document.querySelector(".alert-msg").appendChild(div);
+
+  setTimeout(() => div.remove(), 3000);
+}
+
 // Init Swiper
 function initSwiper() {
   const swiper = new Swiper(".swiper", {
@@ -270,10 +337,6 @@ function initSwiper() {
 
     // Responsive breakpoints
     breakpoints: {
-      // when window width is >= 320px
-      320: {
-        slidesPerView: 1,
-      },
       // when window width is >= 480px
       500: {
         slidesPerView: 2,
@@ -289,20 +352,6 @@ function initSwiper() {
       },
     },
   });
-}
-// === MAIN FUNCTION: FETCH DATA ===
-async function fetchAPIData(endpoint) {
-  const API_KEY = "4bc2ad4ae277f2a876e4ab1951a4111b";
-  const API_URL = "https://api.themoviedb.org/3/";
-  showSpinner();
-
-  const response = await fetch(
-    `${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US`
-  );
-  const data = await response.json();
-  hideSpinner();
-
-  return data;
 }
 
 // Show Spinner
@@ -370,6 +419,9 @@ function init() {
       break;
     case "/tv-details.html":
       displayShowDetails();
+      break;
+    case "/search.html":
+      search();
       break;
   }
 
