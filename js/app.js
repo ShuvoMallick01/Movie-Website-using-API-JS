@@ -273,11 +273,62 @@ async function search() {
   global.search.type = urlParams.get("type");
 
   if (global.search.term !== "" && global.search.term !== null) {
-    const result = await searchAPIData();
-    console.log(result);
+    const { results, page, total_pages } = await searchAPIData();
+    console.log(results);
+
+    if (results.length === 0) {
+      alert("Result not found", "alert alert-danger");
+      return;
+    }
+
+    displaySearchResult(results);
+
+    document.querySelector("#search-term").value = "";
   } else {
-    alert("Blank Input..", "alert");
+    alert("Blank Input..", "alert alert-danger");
   }
+}
+
+// Display Search Result
+function displaySearchResult(results) {
+  results.forEach((result) => {
+    const div = document.createElement("div");
+    div.className = "col-xl-3 col-lg-4";
+
+    div.innerHTML = `
+    <div class="card movie-card">
+    <a href="./${global.search.type}-details.html?id=${result.id}">
+      ${
+        result.poster_path
+          ? `<img src="https://www.themoviedb.org/t/p/w300${result.poster_path}"
+        class="card-img-top" alt="${
+          global.search.type === "movie" ? result.title : result.name
+        }"/>`
+          : `<img
+              src="./assets/images/movie-thumnail.jpg"
+              class="card-img-top"
+              alt="${
+                global.search.type === "movie" ? result.title : result.name
+              }"
+            />`
+      }
+       </a>
+
+      <div class="card-body">
+        <h5 class="card-title">${
+          global.search.type === "movie" ? result.title : result.name
+        }</h5>
+        <p class="card-text">Release: ${
+          global.search.type === "movie"
+            ? result.release_date
+            : result.first_air_date
+        }</p>
+      </div>
+    </div>`;
+
+    const popularMovie = document.querySelector(".search-result");
+    popularMovie.appendChild(div);
+  });
 }
 
 // === MAKE SEARCH AND GET DATA
@@ -313,7 +364,7 @@ async function fetchAPIData(endpoint) {
 // Show Alert
 function alert(message, className) {
   const div = document.createElement("div");
-  div.classList.add("alert-warning", className);
+  div.className = className;
   div.setAttribute("role", "alert");
   div.appendChild(document.createTextNode(message));
   document.querySelector(".alert-msg").appendChild(div);
